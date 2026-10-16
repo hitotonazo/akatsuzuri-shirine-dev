@@ -1,0 +1,23 @@
+.c-en {
+  font-family: var(--font-en);
+  letter-spacing: 0.08em;
+}
+
+.c-page-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+}
+
+.c-page-heading__en {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-brand);
+  font-family: var(--font-en);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}

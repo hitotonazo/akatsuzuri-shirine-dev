@@ -1,0 +1,149 @@
+.c-section-paper {
+  background-color: var(--color-paper);
+  background-image:
+    url("../../images/seigaiha-01.webp"),
+    url("../../images/seigaiha-02.webp");
+  background-position: left top, right bottom;
+  background-repeat: no-repeat;
+}
+
+.c-section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: var(--color-brand);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.c-section-kicker::before {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  background: url("../../images/shrine-symbol.webp") center / contain no-repeat;
+  content: "";
+}
+
+:where(.c-section-lead--center, .worship__intro) .c-section-kicker {
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+:where(.c-section-lead--center, .worship__intro) .c-section-kicker::before {
+  width: 28px;
+  height: 28px;
+  flex-basis: 28px;
+}
+
+.c-section-heading {
+  margin-bottom: 30px;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+.c-subheading {
+  margin: 0 0 24px;
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  line-height: 1.6;
+}
+.c-subheading span { font-family: var(--font-body); font-size: 14px; letter-spacing: 0.08em; }
+
+.c-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 96px);
+}
+.c-split--reverse { grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr); }
+.c-split--reverse .c-split__media { order: 2; }
+.c-split__media img { width: 100%; height: auto; }
+.c-split__body p + p { margin-top: 16px; }
+.c-split__body .c-button { margin-top: 30px; }
+
+.c-benefit-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.c-benefit-list li { padding: 8px 18px; border-left: 2px solid var(--color-brand); background: #fff; font-family: var(--font-heading); }
+
+.c-feature { display: grid; grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr); align-items: stretch; padding: 0; background: var(--color-paper); }
+.c-feature__body { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 6vw, 80px); }
+.c-feature__body .c-button { align-self: flex-start; margin-top: 30px; }
+.c-feature__media img { width: 100%; height: 100%; object-fit: cover; }
+.c-feature__media--illustration img { object-fit: contain; }
+.c-feature--dark { color: #fff; background: var(--color-text); }
+
+.c-section-lead { display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); align-items: end; gap: clamp(32px, 7vw, 96px); margin-bottom: 52px; }
+.c-section-lead .c-section-heading { margin-bottom: 0; }
+.c-section-lead--center { display: block; text-align: center; }
+.c-section-lead--center p { max-width: 680px; margin: 18px auto 0; }
+.c-image-pair { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: start; gap: 24px; }
+.c-image-pair img { width: 100%; height: auto; }
+.c-image-pair figure { margin: 0; }
+.c-image-pair figcaption { margin-top: 10px; color: var(--color-muted); font-size: 14px; }
+.c-section-action { margin-top: 36px; text-align: center; }
+.c-wide-image { width: 100%; height: auto; }
+
+.c-deity { display: grid; grid-template-columns: minmax(260px, 0.72fr) minmax(280px, 0.8fr); align-items: center; justify-content: center; gap: clamp(48px, 8vw, 110px); }
+.c-deity__image { max-width: 500px; padding: 18px; border: 1px solid var(--color-border); background: var(--color-paper); }
+.c-deity__image img { width: 100%; height: auto; }
+.c-benefit-cards { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 44px; border-top: 1px solid var(--color-border); border-left: 1px solid var(--color-border); }
+.c-benefit-cards li { display: grid; min-height: 150px; place-content: center; gap: 10px; border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); text-align: center; }
+.c-benefit-cards span { color: var(--color-brand); font-family: var(--font-en); }
+.c-benefit-cards strong { font-family: var(--font-heading); font-size: 22px; font-weight: 500; }
+
+.c-link-panel { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-block: 52px; border-block: 1px solid var(--color-border); }
+.c-link-panel .c-section-heading { margin-bottom: 12px; }
+.c-link-panel__actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 12px; }
+.c-archive { display: grid; grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr); align-items: center; gap: clamp(40px, 7vw, 90px); }
+.c-archive__body p + p { margin-top: 16px; }
+.c-archive__media img { width: 100%; height: auto; }
+
+.ema-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 52px 28px; }
+.ema-gallery__item { margin: 0; }
+.ema-gallery__item--featured { grid-column: 1 / -1; width: calc(50% - 14px); margin-inline: auto; }
+.ema-gallery__image { overflow: hidden; background: #e9e4da; aspect-ratio: 4 / 3; }
+.ema-gallery__image img { width: 100%; height: 100%; object-fit: cover; }
+.ema-gallery figcaption { margin-top: 12px; font-family: var(--font-heading); font-size: 18px; text-align: center; }
+
+.worship { text-align: center; }
+.worship__intro { margin-bottom: 44px; }
+.worship__guidance { margin-top: -14px; color: var(--color-muted); }
+.worship__image { position: relative; overflow: hidden; border: 1px solid var(--color-border); background: var(--color-paper); aspect-ratio: 4 / 3; }
+.worship__image img { width: 100%; height: 100%; object-fit: contain; }
+.worship__bell { position: absolute; top: 47%; left: 50%; width: clamp(64px, 10vw, 112px); height: clamp(82px, 13vw, 148px); border: 2px solid transparent; border-radius: 50%; background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
+.worship__bell:hover { border-color: rgba(255, 255, 255, 0.8); background: rgba(203, 2, 32, 0.08); }
+.worship__message { margin-top: 30px; padding: 28px; background: var(--color-paper); font-family: var(--font-heading); font-size: 20px; }
+.c-reading p + p { margin-top: 20px; }
+.visit-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.visit-gallery figure { margin: 0; background: #fff; }
+.visit-gallery img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.visit-gallery figcaption { display: grid; gap: 8px; padding: 20px; }
+.visit-gallery strong { font-family: var(--font-heading); font-size: 20px; font-weight: 500; }
+.visit-gallery span { color: var(--color-muted); font-size: 14px; }
+
+@media (max-width: 767px) {
+  .c-section-heading { margin-bottom: 22px; }
+  .c-split, .c-split--reverse, .c-feature, .c-section-lead, .c-deity, .c-archive { grid-template-columns: 1fr; gap: 32px; }
+  .c-split--reverse .c-split__media { order: 0; }
+  .c-feature__body { padding: 40px 24px; }
+  .c-feature__media { order: -1; }
+  .c-section-lead { align-items: start; margin-bottom: 34px; }
+  .c-image-pair { grid-template-columns: 1fr; gap: 28px; }
+  .c-deity__image { width: min(100%, 440px); margin-inline: auto; }
+  .c-benefit-cards { grid-template-columns: 1fr; }
+  .c-benefit-cards li { min-height: 104px; }
+  .c-link-panel { display: block; padding-block: 40px; }
+  .c-link-panel__actions { margin-top: 28px; }
+  .ema-gallery { grid-template-columns: 1fr; gap: 38px; }
+  .ema-gallery__item--featured { grid-column: auto; width: 100%; }
+  .worship__intro br { display: none; }
+  .worship__bell { width: 68px; height: 88px; }
+  .visit-gallery { grid-template-columns: 1fr; }
+}

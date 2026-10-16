@@ -1,0 +1,26 @@
+.l-container,
+.l-container--reading {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.l-container {
+  max-width: calc(var(--container) + (var(--gutter) * 2));
+}
+
+.l-container--reading {
+  max-width: calc(var(--container-reading) + (var(--gutter) * 2));
+}
+
+.l-section {
+  padding-block: var(--space-section-md);
+}
+
+.l-section--large {
+  padding-block: var(--space-section-lg);
+}
+
+.l-section--small {
+  padding-block: var(--space-section-sm);
+}

@@ -1,0 +1,32 @@
+$breakpoint-mobile: 767px;
+
+:root {
+  --color-brand: #cb0220;
+  --color-brand-dark: #9f0018;
+  --color-text: #241c19;
+  --color-muted: #6b625e;
+  --color-bg: #fff;
+  --color-paper: #f8f6f1;
+  --color-border: #ddd7d1;
+  --font-heading: "Shippori Mincho", "Yu Mincho", "YuMincho", serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-en: "Libre Caslon Display", Georgia, serif;
+  --container: 1200px;
+  --container-reading: 860px;
+  --gutter: 40px;
+  --space-section-lg: 120px;
+  --space-section-md: 96px;
+  --space-section-sm: 64px;
+  --header-height: 92px;
+  --transition: 220ms ease;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  :root {
+    --gutter: 20px;
+    --space-section-lg: 72px;
+    --space-section-md: 64px;
+    --space-section-sm: 48px;
+    --header-height: 68px;
+  }
+}

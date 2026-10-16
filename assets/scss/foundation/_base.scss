@@ -1,0 +1,65 @@
+@use "variables" as v;
+
+html {
+  min-width: 320px;
+  background: var(--color-bg);
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image: url("../../images/bg-paper.webp");
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+body.is-menu-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(203, 2, 32, 0.35);
+  outline-offset: 3px;
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.l-main {
+  min-height: calc(100svh - var(--header-height));
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+  body {
+    // Fixed backgrounds trigger repaint jank on several mobile browsers.
+    background-attachment: scroll;
+  }
+}

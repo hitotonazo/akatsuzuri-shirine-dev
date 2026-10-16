@@ -1,0 +1,37 @@
+.page-intro {
+  display: grid;
+  min-height: clamp(300px, 34vw, 440px);
+  place-items: center;
+  padding-block: var(--space-section-lg);
+  color: #fff;
+  text-align: center;
+  background:
+    linear-gradient(rgba(48, 4, 10, 0.64), rgba(20, 10, 10, 0.72)),
+    url("../../images/hero-slide-01.webp") center / cover no-repeat;
+}
+
+.page-intro .c-page-heading__en { color: #fff; }
+
+.page-intro__lead {
+  max-width: 680px;
+  margin: 22px auto 0;
+}
+
+.page-intro__mark {
+  width: 46px;
+  height: auto;
+  margin: 0 auto 24px;
+}
+
+.page-intro__rule {
+  width: 1px;
+  height: 48px;
+  margin: 28px auto 0;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 767px) {
+  .page-intro {
+    min-height: 300px;
+  }
+}
