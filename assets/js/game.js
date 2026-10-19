@@ -96,13 +96,32 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (!enforcePageAccess()) return;
     const bell = document.querySelector('[data-worship-bell]');
+    const bellImage = document.querySelector('[data-worship-bell-image]');
     const message = document.querySelector('[data-worship-message]');
-    if (bell) {
-      const renderWorship = () => { message.hidden = !state.hasWorshipped; bell.disabled = state.hasWorshipped; };
+    if (bell && bellImage && message) {
+      const bellSound = new Audio('images/garagara2.mp3');
+      bellSound.preload = 'auto';
+      let isRinging = false;
+      const renderWorship = () => { message.hidden = !state.hasWorshipped; bell.disabled = state.hasWorshipped || isRinging; };
       bell.addEventListener('click', () => {
-        if (state.hasWorshipped) return;
-        set((next) => { next.hasWorshipped = true; next.visitId ||= visitId(); });
+        if (state.hasWorshipped || isRinging) return;
+        isRinging = true;
         renderWorship();
+        bellImage.classList.remove('is-ringing');
+        void bellImage.offsetWidth;
+        bellImage.classList.add('is-ringing');
+        bellSound.currentTime = 0;
+        bellSound.play().catch(() => {});
+
+        const finishWorship = () => {
+          if (!isRinging) return;
+          isRinging = false;
+          bellImage.classList.remove('is-ringing');
+          set((next) => { next.hasWorshipped = true; next.visitId ||= visitId(); });
+          renderWorship();
+        };
+        bellImage.addEventListener('animationend', finishWorship, { once: true });
+        window.setTimeout(finishWorship, 1500);
       });
       document.addEventListener('akatsuzuri:statechange', renderWorship);
       renderWorship();

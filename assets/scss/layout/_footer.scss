@@ -54,6 +54,18 @@
   margin-top: 4px;
 }
 
+.site-footer__credit {
+  display: inline-block;
+  min-height: 44px;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 44px;
+}
+
+.site-footer__credit:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 767px) {
   .site-footer {
     padding-block: 48px 24px;

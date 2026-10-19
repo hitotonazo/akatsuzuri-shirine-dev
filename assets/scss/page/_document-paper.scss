@@ -1,0 +1,120 @@
+$ink: #17100d;
+$red: #9f0018;
+$red-dark: #710012;
+$paper: rgba(239, 220, 174, .64);
+$paper-light: rgba(255, 247, 218, .42);
+$rule: rgba(23, 16, 13, .58);
+$document-font: "Yuji Boku", "Yu Mincho", "YuMincho", serif;
+$document-background: url("../../images/old-document-paper.jpg") center top / cover fixed;
+
+// Shared paper treatment for the two standalone records.
+.c-document-page {
+  color: $ink;
+  background: $document-background;
+  font-family: $document-font;
+}
+
+.c-document {
+  color: $ink;
+  border: 1px solid $ink;
+  background: $paper;
+  box-shadow: 0 18px 54px rgba(23, 16, 13, .25);
+  font-family: $document-font;
+}
+
+.c-document :is(h1, h2, h3, p, th, td, a, strong) { font-family: inherit; }
+.c-document__eyebrow { color: $red; }
+.c-document__title,
+.c-document__heading { color: $ink; }
+.c-document__lead { border-top-color: $ink; }
+.c-document__classical { color: $red-dark; border-block-color: $red; }
+.c-document__translation,
+.c-document__note { border-left-color: $red; }
+.c-document__note { color: $ink; background: rgba(159, 0, 24, .08); }
+.c-document__note--quiet { color: $ink; background: $paper-light; }
+.c-record-table { color: $ink; background: $paper-light; }
+.c-record-table th,
+.c-record-table td { border-color: $ink; }
+.c-record-table th { color: $red-dark; background: rgba(159, 0, 24, .1); }
+.c-record-table tr.is-emphasis { color: $red-dark; background: rgba(159, 0, 24, .12); box-shadow: inset 4px 0 $red; }
+.c-role-card { color: $ink; border-color: $red; background: $paper-light; }
+.c-document .c-button { color: $red-dark; border-color: $red-dark; background: transparent; font-family: inherit; }
+.c-document .c-button:hover { color: #fff; background: $red-dark; }
+
+// Akatsuzuri record modal.
+.c-modal__backdrop { background: rgba(23, 16, 13, .72); }
+.c-modal__dialog,
+.c-modal__dialog--dark {
+  color: $ink;
+  border-color: $ink;
+  background: $document-background;
+  box-shadow: 0 22px 90px rgba(23, 16, 13, .52);
+  font-family: $document-font;
+}
+.c-modal__dialog :is(h2, p, strong, button, a) { font-family: inherit; }
+.c-modal__title,
+.c-modal__record strong { color: $red-dark; }
+.c-modal__close { color: $red-dark; border-color: $red-dark; background: rgba(239, 220, 174, .78); }
+.c-modal__record,
+.c-modal__dialog--dark .c-modal__record { color: $ink; border-color: $ink; background: $paper; }
+.c-modal .c-document__classical { color: $red-dark; }
+.c-modal .c-button { color: $red-dark; border-color: $red-dark; background: transparent; }
+.c-modal .c-button:hover { color: #fff; background: $red-dark; }
+
+// Candidate-management record revealed on events.html.
+.records-panel {
+  color: $ink;
+  background: $document-background;
+  font-family: $document-font;
+}
+.records-panel :is(h2, h3, p, li, strong, a) { font-family: inherit; }
+.records-panel__intro .c-section-kicker,
+.records-panel__number { color: $red; }
+.records-panel__section { border-top-color: $ink; }
+.records-flow li { color: $ink; border-color: $ink; background: $paper-light; }
+.records-flow li::after { color: $red-dark; }
+.records-status li { color: $ink; border-left-color: $red; background: $paper-light; }
+.records-status strong { color: $red-dark; }
+.records-panel__warning { color: $red-dark; border-color: $red; background: rgba(159, 0, 24, .07); }
+.records-panel__images img { border: 1px solid $ink; }
+.records-panel__cta .c-button { color: $red-dark; border-color: $red-dark; background: transparent; }
+.records-panel__cta .c-button:hover { color: #fff; background: $red-dark; }
+.records-panel__cta .c-button[aria-disabled="true"] { color: rgba(23, 16, 13, .6); border-color: rgba(23, 16, 13, .55); background: transparent; }
+.records-panel__pending { color: $ink; }
+
+// Integrated report page.
+.truth-body { color: $ink; background: $document-background; }
+.truth-page {
+  color: $ink;
+  background: transparent;
+  font-family: $document-font;
+}
+.truth-page :is(h1, h2, p, li, span, strong, table, th, td, dt, dd, button, a) { font-family: inherit; }
+.truth-hero,
+.truth-section { border-bottom-color: $ink; }
+.truth-hero__label,
+.truth-section__number { color: $red; }
+.truth-hero h1,
+.truth-section__heading { color: $ink; }
+.truth-hero__meta,
+.truth-note,
+.truth-records span:first-child,
+.truth-ending__record dt { color: $ink; }
+.truth-section strong,
+.truth-accent { color: $red-dark; }
+.truth-images img { border-color: $ink; }
+.truth-flow { color: $ink; border-color: $red; background: $paper; }
+.truth-records li { color: $ink; border-left-color: $red; background: $paper; }
+.truth-table { color: $ink; background: $paper; }
+.truth-table th,
+.truth-table td { border-color: $ink; }
+.truth-table th { color: $red-dark; background: rgba(159, 0, 24, .08); }
+.truth-ending::before { background: $document-background; }
+.truth-ending::after { background: rgba(239, 220, 174, .18); }
+.truth-ending__panel { color: $ink; border-color: $red; background: rgba(239, 220, 174, .78); box-shadow: 0 24px 70px rgba(23, 16, 13, .28); }
+.truth-ending__record div { border-bottom-color: $ink; }
+.truth-ending__record dd,
+.truth-ending__final { color: $ink; }
+.truth-ending__conclusion { color: $red-dark; }
+.truth-share .c-button { color: $red-dark; border-color: $red-dark; font-family: inherit; }
+.truth-share .c-button:hover { color: #fff; background: $red-dark; }
