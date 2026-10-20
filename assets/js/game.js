@@ -96,32 +96,47 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (!enforcePageAccess()) return;
     const bell = document.querySelector('[data-worship-bell]');
-    const bellImage = document.querySelector('[data-worship-bell-image]');
+    const rope = document.querySelector('[data-worship-rope]');
     const message = document.querySelector('[data-worship-message]');
-    if (bell && bellImage && message) {
+    if (bell && rope && message) {
       const bellSound = new Audio('images/garagara2.mp3');
       bellSound.preload = 'auto';
+      const ropeFrames = {
+        center: 'images/worship-rope-center.png',
+        left: 'images/worship-rope-left.png',
+        right: 'images/worship-rope-right.png'
+      };
+      Object.values(ropeFrames).forEach((src) => { const image = new Image(); image.src = src; });
       let isRinging = false;
+      let ropeTimers = [];
       const renderWorship = () => { message.hidden = !state.hasWorshipped; bell.disabled = state.hasWorshipped || isRinging; };
+      const showRope = (frame) => { rope.src = ropeFrames[frame]; rope.dataset.ropeFrame = frame; };
+      const clearRopeTimers = () => { ropeTimers.forEach((timer) => window.clearTimeout(timer)); ropeTimers = []; };
       bell.addEventListener('click', () => {
         if (state.hasWorshipped || isRinging) return;
         isRinging = true;
         renderWorship();
-        bellImage.classList.remove('is-ringing');
-        void bellImage.offsetWidth;
-        bellImage.classList.add('is-ringing');
+        clearRopeTimers();
+        showRope('center');
         bellSound.currentTime = 0;
         bellSound.play().catch(() => {});
 
         const finishWorship = () => {
           if (!isRinging) return;
           isRinging = false;
-          bellImage.classList.remove('is-ringing');
+          clearRopeTimers();
+          showRope('center');
           set((next) => { next.hasWorshipped = true; next.visitId ||= visitId(); });
           renderWorship();
         };
-        bellImage.addEventListener('animationend', finishWorship, { once: true });
-        window.setTimeout(finishWorship, 1500);
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          ropeTimers.push(window.setTimeout(finishWorship, 1));
+          return;
+        }
+        [['right', 140], ['center', 300], ['left', 470], ['center', 650], ['right', 830], ['center', 1010], ['left', 1170], ['center', 1320]].forEach(([frame, delay]) => {
+          ropeTimers.push(window.setTimeout(() => showRope(frame), delay));
+        });
+        ropeTimers.push(window.setTimeout(finishWorship, 1400));
       });
       document.addEventListener('akatsuzuri:statechange', renderWorship);
       renderWorship();

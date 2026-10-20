@@ -205,12 +205,22 @@
   object-fit: contain;
 }
 
+.truth-ending__suzu {
+  position: absolute;
+  z-index: 1;
+  top: 39%;
+  left: 50%;
+  width: 13%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
 .truth-ending__bell {
   position: absolute;
-  top: 44.2%;
+  top: 47%;
   left: 50%;
-  width: 38.7%;
-  height: 55.8%;
+  width: 24%;
+  height: 53%;
   pointer-events: none;
   transform: translateX(-50%);
 }

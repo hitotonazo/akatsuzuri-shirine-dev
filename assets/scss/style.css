@@ -81,7 +81,7 @@ body {
   overflow-x: clip;
   color: var(--color-text);
   background-color: var(--color-bg);
-  background-image: url("../../images/bg-paper.png");
+  background-image: url("../../images/bg-paper.webp");
   background-attachment: fixed;
   background-position: center top;
   background-repeat: no-repeat;
@@ -128,6 +128,11 @@ a {
   min-height: calc(100svh - var(--header-height));
 }
 
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
+}
 .c-en {
   font-family: var(--font-en);
   letter-spacing: 0.08em;
@@ -465,6 +470,18 @@ a {
   margin-top: 4px;
 }
 
+.site-footer__credit {
+  display: inline-block;
+  min-height: 44px;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 44px;
+}
+
+.site-footer__credit:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 767px) {
   .site-footer {
     padding-block: 48px 24px;
@@ -696,7 +713,7 @@ a {
 .c-document-page {
   color: #f1e9e5;
   padding-block: var(--space-section-lg);
-  background: linear-gradient(rgba(10, 7, 8, 0.94), rgba(18, 8, 10, 0.97)), url("../../images/old-document-paper.jpg") center top/cover fixed;
+  background: linear-gradient(rgba(10, 7, 8, 0.94), rgba(18, 8, 10, 0.97)), url("../../images/old-document-paper.webp") center top/cover fixed;
 }
 
 .c-document {
@@ -984,7 +1001,7 @@ html.is-modal-open body {
   padding-block: var(--space-section-lg);
   color: #fff;
   text-align: center;
-  background: linear-gradient(rgba(48, 4, 10, 0.64), rgba(20, 10, 10, 0.72)), url("../../images/hero-slide-01.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(48, 4, 10, 0.64), rgba(20, 10, 10, 0.72)), url("../../images/hero-slide-01.webp") center/cover no-repeat;
 }
 
 .page-intro .c-page-heading__en {
@@ -1016,7 +1033,7 @@ html.is-modal-open body {
 }
 .c-section-paper {
   background-color: var(--color-paper);
-  background-image: url("../../images/seigaiha-01.png"), url("../../images/seigaiha-02.png");
+  background-image: url("../../images/seigaiha-01.webp"), url("../../images/seigaiha-02.webp");
   background-position: left top, right bottom;
   background-repeat: no-repeat;
 }
@@ -1037,7 +1054,7 @@ html.is-modal-open body {
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
-  background: url("../../images/shrine-symbol.png") center/contain no-repeat;
+  background: url("../../images/shrine-symbol.webp") center/contain no-repeat;
   content: "";
 }
 
@@ -1351,29 +1368,72 @@ html.is-modal-open body {
   aspect-ratio: 4/3;
 }
 
-.worship__image img {
+.worship__background {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.worship__bell {
+.worship__suzu {
+  position: absolute;
+  z-index: 1;
+  top: 39%;
+  left: 50%;
+  width: 13%;
+  height: auto;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.worship__rope-visual {
   position: absolute;
   top: 47%;
   left: 50%;
-  width: clamp(64px, 10vw, 112px);
-  height: clamp(82px, 13vw, 148px);
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  transform: translate(-50%, -50%);
+  width: 24%;
+  height: 53%;
+  pointer-events: none;
+  transform: translateX(-50%);
 }
 
-.worship__bell:hover {
-  border-color: rgba(255, 255, 255, 0.8);
-  background: rgba(203, 2, 32, 0.08);
+.worship__rope-visual img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center top;
+     object-position: center top;
+}
+
+.worship__rope-visual img[data-rope-frame=left] {
+  transform: translateX(-10%);
+}
+
+.worship__rope-visual img[data-rope-frame=right] {
+  transform: translateX(10%);
+}
+
+.worship__bell {
+  position: absolute;
+  z-index: 2;
+  top: 47%;
+  left: 50%;
+  width: max(12%, 44px);
+  height: 53%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.worship__bell:disabled {
+  cursor: default;
+}
+
+.worship__bell:focus-visible {
+  outline-offset: -3px;
 }
 
 .worship__message {
@@ -1476,10 +1536,6 @@ html.is-modal-open body {
   }
   .worship__intro br {
     display: none;
-  }
-  .worship__bell {
-    width: 68px;
-    height: 88px;
   }
   .visit-gallery {
     grid-template-columns: 1fr;
@@ -1823,6 +1879,12 @@ html.is-modal-open body {
   background-image: none;
 }
 
+.truth-body .site-header {
+  color: var(--color-text);
+  border-bottom-color: var(--color-border);
+  background: rgba(255, 255, 255, 0.97);
+}
+
 .truth-page {
   color: #e9e1db;
   background: #100d0d;
@@ -1900,25 +1962,22 @@ html.is-modal-open body {
   filter: saturate(0.72) contrast(1.08);
 }
 
+.truth-images--single {
+  grid-template-columns: 1fr;
+}
+
+.truth-images--single img {
+  width: 100%;
+}
+
 .truth-flow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
   margin-top: 38px;
-  padding: 24px;
+  padding: 24px 24px 24px 48px;
   border: 1px solid rgba(203, 2, 32, 0.5);
   background: #1b1515;
-}
-
-.truth-flow li {
-  position: relative;
-}
-
-.truth-flow li:not(:last-child)::after {
-  position: absolute;
-  left: calc(100% + 10px);
-  color: #cb0220;
-  content: "→";
 }
 
 .truth-records {
@@ -1941,7 +2000,7 @@ html.is-modal-open body {
 }
 
 .truth-table-wrap {
-  margin-top: 40px;
+  margin: 40px 0 48px;
   overflow-x: auto;
 }
 
@@ -1985,7 +2044,7 @@ html.is-modal-open body {
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: url("../../images/ending-ledger.jpg") center/cover no-repeat;
+  background: url("../../images/ending-ledger.webp") center/cover no-repeat;
   content: "";
 }
 
@@ -2005,9 +2064,46 @@ html.is-modal-open body {
 }
 
 .truth-ending__image {
-  height: auto;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4/3;
   margin-bottom: 36px;
-  opacity: 0.76;
+  opacity: 1;
+}
+
+.truth-ending__background {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.truth-ending__suzu {
+  position: absolute;
+  z-index: 1;
+  top: 39%;
+  left: 50%;
+  width: 13%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.truth-ending__bell {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  width: 24%;
+  height: 53%;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.truth-ending__bell img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .truth-ending__record {
@@ -2050,6 +2146,12 @@ html.is-modal-open body {
   text-align: center;
 }
 
+.truth-share__actions {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
 .truth-share .c-button {
   color: #fff;
   border-color: #cb0220;
@@ -2063,15 +2165,6 @@ html.is-modal-open body {
 @media (max-width: 767px) {
   .truth-images {
     grid-template-columns: 1fr;
-  }
-  .truth-flow {
-    display: grid;
-    gap: 28px;
-  }
-  .truth-flow li:not(:last-child)::after {
-    top: calc(100% + 3px);
-    left: 50%;
-    transform: rotate(90deg);
   }
   .truth-records li,
   .truth-ending__record div {

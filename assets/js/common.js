@@ -52,7 +52,6 @@
           <div class="site-footer__bottom">
             <p>©ぺいぽぴー</p>
             <p class="site-footer__disclaimer">※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係ありません。</p>
-            <p><a class="site-footer__credit" href="https://pocket-se.info/">ポケットサウンド/効果音素材</a></p>
           </div>
         </div>
       </footer>`;
